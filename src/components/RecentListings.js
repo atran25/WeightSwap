@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import calandar from "dayjs/plugin/calendar";
 import {
   collection,
   getDocs,
@@ -8,17 +8,18 @@ import {
   orderBy,
   limit,
   startAfter,
+  serverTimestamp,
 } from "firebase/firestore";
 import { db } from "../firebase.config";
 import { toast } from "react-toastify";
-import Spinner from "../components/Spinner";
-import ListingItem from "../components/ListingItem";
+import Spinner from "./Spinner";
+import ListingItem from "./ListingItem";
+import dayjs from "dayjs";
 
-const Offers = () => {
+const RecentListings = () => {
+  const LISTING_LIMIT = 10;
   const [listings, setListings] = useState(null);
   const [loading, setLoading] = useState(true);
-
-  const params = useParams();
 
   useEffect(() => {
     const fetchListings = async () => {
@@ -27,9 +28,8 @@ const Offers = () => {
 
         const q = query(
           listingsRef,
-          where("offer", "==", true),
           orderBy("timestamp", "desc"),
-          limit(10)
+          limit(LISTING_LIMIT)
         );
         const querySnap = await getDocs(q);
 
@@ -44,16 +44,15 @@ const Offers = () => {
         setListings(listings);
         setLoading(false);
       } catch (error) {
-        toast.error(`Unable to fetch offers`);
+        toast.error(`Unable to fetch recent listings`);
       }
     };
     fetchListings();
   }, []);
-
   return (
-    <div className="category">
+    <div>
       <header>
-        <p className="pageHeader">Offers</p>
+        <p className="exploreCategoryHeading">Recent Listings</p>
       </header>
 
       {loading ? (
@@ -62,21 +61,30 @@ const Offers = () => {
         <>
           <main>
             <ul className="categoryListings">
-              {listings.map((listing) => (
-                <ListingItem
-                  listing={listing.data}
-                  id={listing.id}
-                  key={listing.id}
-                />
-              ))}
+              {listings.map((listing) => {
+                dayjs.extend(calandar);
+                const listingDate = listing.data.timestamp.toDate();
+                return (
+                  <>
+                    <p className="exploreCategoryName">
+                      {dayjs(listingDate).calendar()}
+                    </p>
+                    <ListingItem
+                      listing={listing.data}
+                      id={listing.id}
+                      key={listing.id}
+                    />
+                  </>
+                );
+              })}
             </ul>
           </main>
         </>
       ) : (
-        <p>No offers currently</p>
+        <p>No Recent listings</p>
       )}
     </div>
   );
 };
 
-export default Offers;
+export default RecentListings;
