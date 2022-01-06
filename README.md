@@ -1,8 +1,8 @@
 Gym marketplace web application that allows for selling and buying of gym equipment. Built using React and Firebase  
 Live Demo: https://weight-swap.vercel.app/sign-in  
 Credentials:   
-username: testtest@gmail.com 
-password: testtest
+username: testtest@gmail.com  
+password: testtest  
 
 # Getting Started with Create React App
 
