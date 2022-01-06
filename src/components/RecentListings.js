@@ -60,7 +60,7 @@ const RecentListings = () => {
       ) : listings && listings.length > 0 ? (
         <>
           <main>
-            <ul className="categoryListings">
+            <ul>
               {listings.map((listing) => {
                 dayjs.extend(calandar);
                 const listingDate = listing.data.timestamp.toDate();

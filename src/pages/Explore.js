@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import weightCategoryImage from "../assets/img/weightCategoryImage.jpg";
-import machineCategoryImage from "../assets/img/machineCategoryImage.jpg";
+import weightCategoryImage from "../assets/img/weightCategoryImage.png";
+import machineCategoryImage from "../assets/img/machineCategoryImage.jpeg";
 import barbellCategoryImage from "../assets/img/barbellCategoryImage.png";
 import RecentListings from "../components/RecentListings";
+import Slider from "../components/Slider";
 
 const Explore = () => {
   return (
@@ -12,6 +13,7 @@ const Explore = () => {
         <p className="pageHeader">Explore</p>
       </header>
       <main>
+        <Slider />
         <p className="exploreCategoryHeading">Categories</p>
         <div className="exploreCategories">
           <Link to="/category/weight">

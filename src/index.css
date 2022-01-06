@@ -75,13 +75,15 @@ button {
 .removeIcon {
   cursor: pointer;
   position: absolute;
-  top: -3%;
+  /* top: -3%; */
+  top: 30%;
   right: -2%;
 }
 .editIcon {
   cursor: pointer;
   position: absolute;
-  top: -3.4%;
+  /* top: -3.4%; */
+  top: 30%;
   right: 20px;
 }
 
@@ -380,7 +382,7 @@ button {
 
 .exploreCategoryImg {
   min-height: 115px;
-  height: 15vw;
+  height: 25vw;
   width: 100%;
   border-radius: 1.5rem;
   object-fit: cover;
@@ -405,7 +407,7 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 10rem;
+  margin-bottom: 5rem;
   position: relative;
 }
 
@@ -514,6 +516,11 @@ button {
   font-weight: 600;
 }
 
+.listingDescription {
+  margin-top: 1rem;
+  font-weight: 600;
+}
+
 .discountPrice {
   padding: 0.25rem 0.5rem;
   background-color: #000000;
@@ -522,6 +529,29 @@ button {
   font-size: 0.8rem;
   font-weight: 600;
   display: inline;
+  margin-right: 1rem;
+}
+
+.usedListing {
+  padding: 0.25rem 0.5rem;
+  background-color: #bb3e03;
+  color: #ffffff;
+  border-radius: 1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: inline;
+  margin-right: 1rem;
+}
+
+.usedHoursListing {
+  padding: 0.25rem 0.5rem;
+  background-color: #bb3e03;
+  color: #ffffff;
+  border-radius: 1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: inline;
+  margin-right: 1rem;
 }
 
 .listingType {
@@ -720,6 +750,7 @@ button {
 
 .formButtons {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .formButton,
@@ -820,4 +851,11 @@ button {
   margin-left: 1rem;
   font-size: 0.8rem;
   opacity: 0.75;
+}
+
+.create-listing {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
 }
